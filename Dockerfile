@@ -5,6 +5,8 @@ MAINTAINER cybermaggedon
 
 ENV PATH $PATH:$HADOOP_PREFIX/bin
 
+RUN dnf install -y java-1.8.0-openjdk
+
 RUN echo -e "\n* soft nofile 65536\n* hard nofile 65536" >> /etc/security/limits.conf
 
 RUN dnf install -y tar

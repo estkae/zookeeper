@@ -1,6 +1,6 @@
 
 REPOSITORY=cybermaggedon/zookeeper
-VERSION=2.7.3
+VERSION=3.4.9
 
 SUDO=
 BUILD_ARGS=
