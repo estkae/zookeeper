@@ -13,5 +13,5 @@ zookeeper-3.4.9.tar.gz:
 	wget http://www.mirrorservice.org/sites/ftp.apache.org/zookeeper/zookeeper-3.4.9/zookeeper-3.4.9.tar.gz
 
 push:
-	${SUDO} docker build ${BUILD_ARGS} -t ${REPOSITORY}:${VERSION}	
+	${SUDO} docker push ${REPOSITORY}:${VERSION}
 
