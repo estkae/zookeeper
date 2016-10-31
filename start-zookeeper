@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ "$ZOOKEEPERS" != "" ]
+then
+
+  ZOOKEEPERS=$(echo $ZOOKEEPERS | sed 's/,/ /g')
+
+  i=1
+  
+  for zk in $ZOOKEEPERS
+  do
+
+    echo Configuring zookeeper $i $zk.
+    echo "server.$i=$zk:2888:3888" >> /usr/local/zookeeper/conf/zoo.cfg
+    i=$(($i + 1))
+
+  done
+
+  mkdir -p /data/zookeeper
+  echo ${ZOOKEEPER_MYID:-1} > /data/zookeeper/myid
+
+fi
+
+sleep 15
+
+/usr/local/zookeeper/bin/zkServer.sh start-foreground
+
