@@ -9,9 +9,8 @@ RUN echo -e "\n* soft nofile 65536\n* hard nofile 65536" >> /etc/security/limits
 
 RUN dnf install -y tar
 
-COPY zookeeper-3.4.9.tar.gz /usr/local/zookeeper.tgz
-RUN cd /usr/local/ && tar xvfz zookeeper.tgz
-RUN mv /usr/local/zookeeper-3.4.9 /usr/local/zookeeper
+ADD zookeeper-3.4.9.tar.gz /usr/local/
+RUN ln -s /usr/local/zookeeper-3.4.9 /usr/local/zookeeper
 
 ENV ZOOKEEPER_HOME /usr/local/zookeeper
 ENV PATH $PATH:$ZOOKEEPER_HOME/bin
