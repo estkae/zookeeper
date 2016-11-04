@@ -16,7 +16,9 @@ ENV ZOOKEEPER_HOME /usr/local/zookeeper
 ENV PATH $PATH:$ZOOKEEPER_HOME/bin
 COPY zookeeper/* $ZOOKEEPER_HOME/conf/
 
-CMD /usr/local/zookeeper/bin/zkServer.sh start-foreground
+COPY start-zookeeper /
+
+CMD /start-zookeeper
 
 EXPOSE 2181
 
