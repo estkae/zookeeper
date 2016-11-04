@@ -4,7 +4,6 @@ Zookeeper container.
 To run standalone, non-persistent:
 
 ```
-
   docker run -p 2181:2181 cybermaggedon/zookeeper:3.4.9
 
 ```
@@ -12,7 +11,6 @@ To run standalone, non-persistent:
 To persist data, mount a volume on /data:
 
 ```
-
   docker run -p 2181:2181 -v /data/zookeeper:/data cybermaggedon/zookeeper:3.4.9
 
 ```
@@ -21,7 +19,6 @@ To run a cluster of Zookeepers, need to play with more settings, and take
 control of hostname or IP address allocation:
 
 ```
-
   docker network create --driver=bridge --subnet=10.10.10.0/24 \
     my-zk-network
 
@@ -39,3 +36,8 @@ control of hostname or IP address allocation:
       -e ZOOKEEPERS=10.10.10.10,10.10.10.11,10.10.10.12 \
       -e ZOOKEEPER_MYID=3 --name zk3 --link zk1:zk1 \
       cybermaggedon/zookeeper:3.4.9
+
+```
+
+Source at <http://github.com/cybermaggedon/zookeeper-docker>.
+
