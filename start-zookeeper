@@ -5,7 +5,7 @@ MY_IP=$(/usr/sbin/ifconfig | grep 'inet[^6]' | awk '{print $2}' |
 	    head -n 1)
 echo My IP is ${MY_IP}.
 
-BIND_ADDRESS=${BIND_ADDRESS:-0.0.0.0}
+ZOOKEEPER_MYID=${ZOOKEEPER_MYID:-1}
 
 if [ "$ZOOKEEPERS" != "" ]
 then
@@ -18,7 +18,13 @@ then
   do
 
     echo Configuring zookeeper $i $zk.
-    echo "server.$i=$zk:2888:3888" >> /usr/local/zookeeper/conf/zoo.cfg
+
+    if [ $i == ${ZOOKEEPER_MYID} ]
+    then
+      echo "server.$i=0.0.0.0:2888:3888" >> /usr/local/zookeeper/conf/zoo.cfg
+    else
+      echo "server.$i=$zk:2888:3888" >> /usr/local/zookeeper/conf/zoo.cfg
+    fi
     i=$(($i + 1))
 
   done
@@ -27,8 +33,6 @@ then
   echo ${ZOOKEEPER_MYID:-1} > /data/zookeeper/myid
 
 fi
-
-echo "clientPortAddress=${BIND_ADDRESS}" >> /usr/local/zookeeper/conf/zoo.cfg
 
 /usr/local/zookeeper/bin/zkServer.sh start-foreground
 
