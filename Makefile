@@ -1,6 +1,6 @@
 
 REPOSITORY=cybermaggedon/zookeeper
-VERSION=3.4.10
+VERSION=3.4.10a
 ZOOKEEPER_VERSION=3.4.10
 
 SUDO=
@@ -11,7 +11,7 @@ all: zookeeper-3.4.10.tar.gz
 
 # FIXME: May not be the right mirror for you.
 zookeeper-${ZOOKEEPER_VERSION}.tar.gz:
-	wget http://www.mirrorservice.org/sites/ftp.apache.org/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz
+	wget -q -O $@ http://www.mirrorservice.org/sites/ftp.apache.org/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz
 
 push:
 	${SUDO} docker push ${REPOSITORY}:${VERSION}
