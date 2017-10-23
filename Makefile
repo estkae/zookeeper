@@ -18,9 +18,8 @@ push:
 
 # Continuous deployment support
 BRANCH=master
-PREFIX=resources/gaffer
-FILE=${PREFIX}/ksonnet/zookeeper-version.jsonnet
-REPO=git@github.com:cybermaggedon/zookeeper-docker
+FILE=zookeeper-version
+REPO=git@github.com:trustnetworks/gaffer
 
 tools: phony
 	if [ ! -d tools ]; then \
@@ -34,5 +33,5 @@ bump-version: tools
 	tools/bump-version
 
 update-cluster-config: tools
-	tools/update-version-config ${BRANCH} ${VERSION} ${FILE}
+	tools/update-version-file ${BRANCH} ${VERSION} ${FILE} ${REPO}
 
