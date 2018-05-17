@@ -1,5 +1,5 @@
 
-FROM fedora:26
+FROM fedora:28
 
 MAINTAINER cybermaggedon
 

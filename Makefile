@@ -1,12 +1,12 @@
 
 REPOSITORY=cybermaggedon/zookeeper
 VERSION=$(shell git describe | sed 's/^v//')
-ZOOKEEPER_VERSION=3.4.10
+ZOOKEEPER_VERSION=3.4.12
 
 SUDO=
 BUILD_ARGS=--build-arg ZOOKEEPER_VERSION=${ZOOKEEPER_VERSION}
 
-all: zookeeper-3.4.10.tar.gz
+all: zookeeper-${ZOOKEEPER_VERSION}.tar.gz
 	${SUDO} docker build ${BUILD_ARGS} -t ${REPOSITORY}:${VERSION} .
 
 # FIXME: May not be the right mirror for you.
