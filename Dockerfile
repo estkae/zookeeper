@@ -3,7 +3,7 @@ FROM fedora:28
 
 MAINTAINER cybermaggedon
 
-ARG ZOOKEEPER_VERSION=3.4.10
+ARG ZOOKEEPER_VERSION=3.4.12
 
 RUN dnf install -y java-1.8.0-openjdk
 

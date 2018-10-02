@@ -1,5 +1,5 @@
 
-REPOSITORY=cybermaggedon/zookeeper
+REPOSITORY=estkae/zookeeper
 VERSION=$(shell git describe | sed 's/^v//')
 ZOOKEEPER_VERSION=3.4.12
 
